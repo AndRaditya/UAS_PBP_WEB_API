@@ -11,10 +11,10 @@ use App\Models\Pendaftaran;
 
 class PendaftaranController extends Controller
 {
-    public function index() //method tampil semua data product (read)
+    public function index($idUser) //method tampil semua data product (read)
     {
-        $pendaftaran = Pendaftaran::all(); //mengambil semua data course
-
+        $pendaftaran = Pendaftaran::where($idUser)->get(); //mengambil semua data course
+        
         if(count($pendaftaran) > 0)  {
             return response([
                 'message' => 'Retrieve All Success',
